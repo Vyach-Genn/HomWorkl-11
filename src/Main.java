@@ -2,20 +2,25 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Task 1");
         int year = 1500;// тестовый год
-        task1(year);
+        printLeapYear(year);
         System.out.println();
         System.out.println("Task 2");
         int clientDeviceYear = 2015;// Введите год
         int modelTelephone = 1;// Введите модель
-        task2(modelTelephone, clientDeviceYear);
+        installTheApplication(modelTelephone, clientDeviceYear);
         System.out.println();
         System.out.println("Task 3");
         int deliveryDistance = 105;// Введите расстояние
-        task3(deliveryDistance);
+        int deliverydays = countingDaysDeliveryDistance(deliveryDistance);
+        if (deliverydays > 0) {
+            System.out.println("На расстояние " + deliveryDistance + " км, понадобится " + deliverydays + " суток.");
+        } else {
+            System.out.println("На расстояния свыше 100 км, доставка невозможна");
+        }
 
     }
 
-    public static void task1(int year) {
+    public static void printLeapYear(int year) {
 
         if (findingALeapYear(year)) {
             System.out.println(year + " год — високосный год");
@@ -32,7 +37,7 @@ public class Main {
         }
     }
 
-    public static void task2(int model, int age) {
+    public static void installTheApplication(int model, int age) {
 
         if (model == 0 && age < 2015) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
@@ -46,19 +51,16 @@ public class Main {
 
     }
 
-    public static void task3(int distance) {
-        int day = 0;
+    public static int countingDaysDeliveryDistance(int distance) {
         if (distance <= 20) {
-            day = 1;
+            return 1;
         } else if (distance <= 60) {
-            day = 2;
+            return 2;
         } else if (distance <= 100) {
-            day = 3;
+            return 3;
         } else {
-            System.out.println("Свыше 100 км доставки нет");
-            return;
+            return 0;
         }
-        System.out.println("Доставка на расстояние " +distance+" км занимает "+ day+" суток");
 
     }
 
